@@ -215,7 +215,7 @@ export default function Main() {
     return (
       <Grid
         throttle={true}
-        columns={3}
+        columns={4}
         inset={Grid.Inset.Zero}
         isLoading={isLoading || bgSearching}
         filtering={false}

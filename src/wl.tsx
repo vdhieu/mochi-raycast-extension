@@ -65,7 +65,7 @@ export default function Command() {
 
   return (
     <Grid
-      columns={3}
+      columns={4}
       inset={Grid.Inset.Zero}
       isLoading={isLoading || !data?.metadata || !user?.id}
       filtering={false}
