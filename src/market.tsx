@@ -241,7 +241,7 @@ export default function Main() {
                     title={`View ${_.upperCase(tokenLookUp?.[selectedToken]?.symbol)}`}
                     onAction={() =>
                       launchCommand({
-                        name: "tick",
+                        name: "ticker",
                         type: LaunchType.UserInitiated,
                         context: { token: selectedToken, src: "market-grid-view" },
                       })

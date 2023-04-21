@@ -14,7 +14,7 @@ export default function useDiscord(login = false) {
       setUser(user);
     } catch (error) {
       console.error(error);
-      // showToast({ style: Toast.Style.Failure, title: String(error) });
+      showToast({ style: Toast.Style.Failure, title: String(error) });
     }
   }, []);
 
@@ -34,7 +34,7 @@ export default function useDiscord(login = false) {
         setUser(user);
       } catch (error) {
         console.error(error);
-        showToast({ style: Toast.Style.Failure, title: String(error) });
+        // showToast({ style: Toast.Style.Failure, title: String(error) });
       }
     })();
   }, [login]);

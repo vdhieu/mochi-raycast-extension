@@ -37,6 +37,7 @@ export default function Main({
       });
     }
   }, [error]);
+
   const AddWatchListAction = (item: any) =>
     user?.id ? (
       <Action
