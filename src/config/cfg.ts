@@ -11,6 +11,7 @@ axios.interceptors.request.use((config) => {
   console.log("[REQUEST]", config.url);
   return config;
 });
+
 axios.interceptors.response.use((response) => {
   if (response.status !== 200) {
     console.log("[RESPONSE ERROR]", response.config.url);

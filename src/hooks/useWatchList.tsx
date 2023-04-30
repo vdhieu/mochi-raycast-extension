@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { Toast, showToast } from "@raycast/api";
 import axios from "axios";
 import useSWR from "swr";
@@ -7,6 +7,7 @@ import _ from "lodash";
 import { IWatchList } from "../wl";
 import useDiscord from "./useDiscord";
 import { IMarketData } from "../market";
+import { IDiscordUser, subscribeOnUserChange } from "../service/discord";
 
 export default function useWatchList() {
   const { user } = useDiscord();
@@ -75,6 +76,17 @@ export default function useWatchList() {
     [user?.id, refreshWatchList]
   );
 
+  useEffect(
+    () =>
+      subscribeOnUserChange((u?: IDiscordUser) => {
+        if (!u?.id) {
+          return;
+        }
+        refreshWatchList();
+      }),
+    [refreshWatchList]
+  );
+
   const watchingMap: Record<string, boolean> = useMemo(() => {
     if (data?.metadata.total === 0) {
       return {};
@@ -92,7 +104,7 @@ export default function useWatchList() {
   return {
     data: user?.id ? data : undefined,
     isValidating,
-    isLoading: isLoading,
+    isLoading: user?.id ? false : isLoading || isValidating,
     watchingMap,
     refreshWatchList,
     addTokenToWatchlist,

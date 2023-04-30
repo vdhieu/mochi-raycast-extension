@@ -1,17 +1,5 @@
-import {
-  Detail,
-  Toast,
-  showToast,
-  Icon,
-  Grid,
-  ActionPanel,
-  Action,
-  launchCommand,
-  environment,
-  LaunchType,
-} from "@raycast/api";
+import { Detail, Icon, Grid, ActionPanel, Action, launchCommand, environment, LaunchType } from "@raycast/api";
 import { useState, useMemo } from "react";
-import axios from "axios";
 import { IMarketData } from "./market";
 import _ from "lodash";
 import Fuse from "fuse.js";
@@ -59,7 +47,7 @@ export default function Command() {
     return _.reduce(data?.data, (acc, item) => ({ [item.id]: item, ...acc }), {}) || {};
   }, [data]);
 
-  if (isLoading) {
+  if (user?.id && isLoading) {
     return <Detail isLoading={isLoading} />;
   }
 

@@ -204,9 +204,7 @@ export default function Main() {
     ) : (
       <Action
         title={"Connect with Discord"}
-        onAction={async () => {
-          loginDiscord();
-        }}
+        onAction={loginDiscord}
         icon={environment.theme === "light" ? "discord-mark-black.png" : "discord-mark-white.png"}
       />
     );

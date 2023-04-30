@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import * as discord from "../service/discord";
-import { Toast, showToast } from "@raycast/api";
+import { Toast, popToRoot, showToast } from "@raycast/api";
 
 export default function useDiscord(login = false) {
   const [user, setUser] = useState<discord.IDiscordUser>();
@@ -19,9 +19,11 @@ export default function useDiscord(login = false) {
   }, []);
 
   const logoutDiscord = useCallback(() => {
-    setUser(undefined);
     discord.logout();
+    popToRoot({ clearSearchBar: true });
   }, []);
+
+  useEffect(() => discord.subscribeOnUserChange(setUser), []);
 
   useEffect(() => {
     (async () => {
@@ -34,7 +36,6 @@ export default function useDiscord(login = false) {
         setUser(user);
       } catch (error) {
         console.error(error);
-        // showToast({ style: Toast.Style.Failure, title: String(error) });
       }
     })();
   }, [login]);

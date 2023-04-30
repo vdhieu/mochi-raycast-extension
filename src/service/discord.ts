@@ -1,4 +1,4 @@
-import { Cache, LocalStorage, OAuth } from "@raycast/api";
+import { Cache, OAuth } from "@raycast/api";
 import axios from "axios";
 
 const cache = new Cache();
@@ -89,4 +89,19 @@ export async function fetchUser(): Promise<IDiscordUser> {
   cache.set("current_user", JSON.stringify(data));
 
   return data;
+}
+
+export function subscribeOnUserChange(callback: (user?: IDiscordUser) => void) {
+  const unsubscribe = cache.subscribe((key: string | undefined, data: string | undefined) => {
+    if (key === "current_user") {
+      if (data) {
+        const user = JSON.parse(data);
+        callback(user as IDiscordUser);
+      } else {
+        callback(undefined);
+      }
+    }
+  });
+
+  return unsubscribe;
 }
