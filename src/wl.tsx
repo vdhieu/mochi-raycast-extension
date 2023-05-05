@@ -58,7 +58,7 @@ export default function Command() {
       isLoading={isLoading || !data?.metadata || !user?.id}
       filtering={false}
       onSearchTextChange={setSearchText}
-      navigationTitle={`${user?.id ? user?.username + "'s" : ""} Watchlist • Coingecko | Mochi`}
+      navigationTitle={`${user?.id ? user?.username + "'s" : ""} Watch list • Coingecko | Mochi`}
       searchBarPlaceholder="Search"
       aspectRatio={"16/9"}
       onSelectionChange={setSelectedToken as any}
@@ -70,7 +70,7 @@ export default function Command() {
         )
       }
     >
-      {!data?.metadata?.total && <Grid.EmptyView icon={Icon.Tray} title="No items in your watchlist" />}
+      {!data?.metadata?.total && <Grid.EmptyView icon={Icon.Tray} title="No items in your watch list" />}
 
       {!!data?.metadata?.total &&
         filteredList
@@ -83,7 +83,7 @@ export default function Command() {
                 source: `${MOCHI_PROXY_ENDPOINT}/api/ticker-compact?token=${item.id}&theme=${environment.theme}`,
               }}
               actions={
-                <ActionPanel title="Watchlist • Mochi">
+                <ActionPanel title="Watch list • Mochi">
                   <Action
                     // eslint-disable-next-line @raycast/prefer-title-case
                     title={`View ${_.upperCase(tokenLookUp?.[selectedToken]?.symbol)}`}

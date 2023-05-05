@@ -188,7 +188,7 @@ export default function Main() {
   const AddWatchListAction = (item: any) =>
     user?.id ? (
       <Action
-        title={watchingMap[item.id] ? "Remove From Watchlist" : "Add to Watchlist"}
+        title={watchingMap[item.id] ? "Remove From Watch List" : "Add to Watch List"}
         onAction={async () => {
           if (watchingMap[item.id]) {
             await removeTokenFromWatchlist(item);
