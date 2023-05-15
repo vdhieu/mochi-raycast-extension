@@ -91,7 +91,7 @@ export default function Command() {
                       launchCommand({
                         name: "ticker",
                         type: LaunchType.UserInitiated,
-                        context: { token: selectedToken, src: "watchlist-grid-view" },
+                        context: { token: selectedToken, src: "watchlist-grid-view", disableSearch: true },
                       })
                     }
                     icon={Icon.LineChart}

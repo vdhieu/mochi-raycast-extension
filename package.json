@@ -1,11 +1,10 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "mochi",
-  "title": "Mochi",
-  "description": "Mochi extension for Raycast",
+  "name": "mochi-gg",
+  "title": "Get Mochi - https://mochi.gg",
+  "description": "Bring Mochi to your Raycast",
   "icon": "command-icon.png",
   "author": "hieuvd",
-  "owner": "hieuvu",
   "categories": [
     "Finance"
   ],

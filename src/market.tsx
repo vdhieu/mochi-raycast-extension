@@ -241,7 +241,7 @@ export default function Main() {
                       launchCommand({
                         name: "ticker",
                         type: LaunchType.UserInitiated,
-                        context: { token: selectedToken, src: "market-grid-view" },
+                        context: { token: selectedToken, src: "market-grid-view", disableSearch: true },
                       })
                     }
                     icon={Icon.LineChart}

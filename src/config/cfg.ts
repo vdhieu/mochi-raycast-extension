@@ -1,11 +1,9 @@
 // application public configuration
 
-import { environment } from "@raycast/api";
+// import { environment } from "@raycast/api";
 import axios from "axios";
 
-export const MOCHI_PROXY_ENDPOINT = environment.isDevelopment
-  ? "http://localhost:3000"
-  : "https://mochi-extension-render.vercel.app";
+export const MOCHI_PROXY_ENDPOINT = "https://mochi-extension-render.vercel.app";
 
 axios.interceptors.request.use((config) => {
   console.log("[REQUEST]", config.url);
