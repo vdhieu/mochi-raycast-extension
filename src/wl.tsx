@@ -58,10 +58,10 @@ export default function Command() {
       isLoading={isLoading || !data?.metadata || !user?.id}
       filtering={false}
       onSearchTextChange={setSearchText}
-      navigationTitle={`${user?.id ? user?.username + "'s" : ""} Watch list • Coingecko | Mochi`}
+      navigationTitle="Watch list • Mochi"
       searchBarPlaceholder="Search"
       aspectRatio={"16/9"}
-      onSelectionChange={setSelectedToken as any}
+      onSelectionChange={setSelectedToken as (id: string | null) => void}
       actions={
         !!user?.id && (
           <ActionPanel>
